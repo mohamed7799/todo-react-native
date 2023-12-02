@@ -4,7 +4,7 @@ import InputField from '../components/inputField';
 import {useState} from 'react';
 import {IItem} from '../components/item';
 
-const Home = () => {
+const Home = ({navigation}: any) => {
   const [ListItems, setListItems] = useState<IItem[]>([]);
 
   const handleAdd = (text: string) => {
@@ -20,7 +20,11 @@ const Home = () => {
     <View style={style.homeStyle}>
       <Text style={style.titleStyle}>TODO App</Text>
       <InputField handleAdd={handleAdd} />
-      <List handleDelete={handleDelete} ListItem={ListItems} />
+      <List
+        navigation={navigation}
+        handleDelete={handleDelete}
+        ListItem={ListItems}
+      />
     </View>
   );
 };
@@ -28,7 +32,9 @@ const Home = () => {
 const style = StyleSheet.create({
   homeStyle: {
     alignItems: 'center',
-    width: '85%',
+    width: '100%',
+    flex: 1,
+    paddingHorizontal: 20,
   },
   titleStyle: {
     fontSize: 35,

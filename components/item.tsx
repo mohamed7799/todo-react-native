@@ -1,3 +1,4 @@
+import {NavigationProp} from '@react-navigation/native';
 import {Pressable, StyleSheet, Text, View} from 'react-native';
 import Icon from 'react-native-vector-icons/Entypo';
 
@@ -10,21 +11,24 @@ interface IItemProp {
   text: string;
   id: number;
   handleDelete: (id: number) => void;
+  navigation?: NavigationProp<any, any>;
 }
 
-const Item = ({text, id, handleDelete}: IItemProp) => {
+const Item = ({text, id, handleDelete, navigation}: IItemProp) => {
   return (
     <View style={style.itemStyle}>
-      <Text style={style.textStyle}>{text}</Text>
+      <Pressable
+        style={style.textStyle}
+        onPress={() => navigation?.navigate('ItemDetails', {text, id})}>
+        {() => <Text>{text}</Text>}
+      </Pressable>
       <Pressable>
         {() => (
-          <View>
-            <Icon
-              onPress={() => handleDelete(id)}
-              name="trash"
-              size={20}
-              color={'#9E4770'}></Icon>
-          </View>
+          <Icon
+            onPress={() => handleDelete(id)}
+            name="trash"
+            size={20}
+            color={'#9E4770'}></Icon>
         )}
       </Pressable>
     </View>

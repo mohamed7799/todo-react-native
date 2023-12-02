@@ -28,7 +28,7 @@ const InputField = ({handleAdd}: IInputField) => {
         onChangeText={handleInputChange}
         style={style.InputStyle}
         placeholder="Add item here..."
-        placeholderTextColor={'#FBFBFB'}></TextInput>
+        placeholderTextColor={'#631D76'}></TextInput>
       <Pressable onPress={handleAddingItem}>
         {() => (
           <View>

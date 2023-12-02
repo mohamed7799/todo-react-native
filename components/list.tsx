@@ -4,9 +4,10 @@ import Item, {IItem} from './item';
 interface IList {
   ListItem: IItem[];
   handleDelete: (id: number) => void;
+  navigation: any;
 }
 
-const List = ({ListItem, handleDelete}: IList) => {
+const List = ({ListItem, handleDelete, navigation}: IList) => {
   return (
     <View style={style.listStyle}>
       <FlatList
@@ -17,6 +18,7 @@ const List = ({ListItem, handleDelete}: IList) => {
             text={itemData.item.text}
             key={itemData.item.id}
             id={itemData.item.id}
+            navigation={navigation}
           />
         )}
       />
